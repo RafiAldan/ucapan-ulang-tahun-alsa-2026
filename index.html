@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Selamat Ulang Tahun, Alsa 🎂</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Particle / star background, lives behind everything -->
+  <div class="particles" id="particles"></div>
+
+  <!-- ===================== PASSWORD GATE ===================== -->
+  <section id="gate" class="screen gate-screen active">
+    <div class="gate-card">
+      <div class="gate-icon" id="gate-icon">🔒</div>
+      <h1 class="gate-title">Untuk Alsa Fitriani</h1>
+      <p class="gate-subtitle">Halaman ini cuma buat kamu. Masukkan kata sandinya ya.</p>
+      <form id="gate-form" autocomplete="off">
+        <div class="gate-input-wrap">
+          <input type="password" id="gate-input" placeholder="Masukkan password..." inputmode="text">
+          <button type="button" id="gate-toggle" class="gate-eye-btn" aria-label="Lihat/sembunyikan password">
+            <span id="gate-eye-icon">🐵</span>
+          </button>
+        </div>
+        <button type="submit">Buka 🔓</button>
+      </form>
+      <p class="gate-error" id="gate-error">Password salah, coba lagi ya 🥺</p>
+    </div>
+  </section>
+
+  <!-- ===================== MAIN APP (hidden until unlocked) ===================== -->
+  <div id="app">
+
+    <!-- music player, floats on every window -->
+    <div class="music-player" id="music-player">
+      <button id="music-toggle" class="music-btn" aria-label="Play/Pause musik">
+        <span id="music-icon">▶</span>
+      </button>
+      <span class="music-label">Musik</span>
+    </div>
+
+    <!-- progress dots -->
+    <div class="progress-dots" id="progress-dots">
+      <span class="dot active" data-dot="0"></span>
+      <span class="dot" data-dot="1"></span>
+      <span class="dot" data-dot="2"></span>
+      <span class="dot" data-dot="3"></span>
+    </div>
+
+    <!-- ---------- WINDOW 0: HERO ---------- -->
+    <section class="screen window active" id="window-0" data-window="0">
+      <div class="confetti-layer" id="confetti-layer"></div>
+      <div class="hero-content">
+        <div class="hero-candle">🕯️</div>
+        <h1 class="hero-title">Selamat Ulang Tahun,<br><span class="hero-name">Alsa</span> 🎉</h1>
+        <div class="counter-box">
+          <span class="counter-number" id="counter-number">0</span>
+          <span class="counter-label">Tahun</span>
+        </div>
+        <p class="hero-date">19 Oktober 2026</p>
+      </div>
+      <div class="nav-row nav-row--single">
+        <button class="btn btn-next" data-next>Lanjut ✨</button>
+      </div>
+    </section>
+
+    <!-- ---------- WINDOW 1: LOVE LETTER ---------- -->
+    <section class="screen window" id="window-1" data-window="1">
+      <div class="letter-content">
+        <h2 class="section-title">Pesan Cinta 💌</h2>
+        <div class="envelope-wrap" id="envelope-wrap">
+          <div class="envelope-scene" id="envelope-scene">
+            <div class="envelope" id="envelope">
+              <div class="envelope-paper-peek" id="envelope-paper-peek">
+                <span class="envelope-peek-lines"></span>
+              </div>
+              <div class="envelope-pocket"></div>
+              <div class="envelope-flap" id="envelope-flap"></div>
+              <div class="envelope-seal" id="envelope-seal">💌</div>
+            </div>
+          </div>
+          <button class="btn btn-envelope" id="envelope-btn">Buka pesanku 💌</button>
+        </div>
+
+        <div class="letter-paper" id="letter-paper" hidden>
+          <p class="letter-paragraph" data-p="1">Untuk Alsa Fitriani, perempuan paling berharga di hidupku.<br><br>Hari ini kamu genap 19 tahun. Aku menulis ini bukan karena kehabisan kata, tapi karena ada terlalu banyak hal yang selama ini belum sempat kusampaikan dengan benar.</p>
+          <p class="letter-paragraph" data-p="2" hidden>Terima kasih sudah bertahan di hari-hari saat aku tidak sempurna: saat aku keras kepala, saat aku sibuk dengan duniaku sendiri, dan saat aku lupa bilang betapa berartinya kamu. Kamu tetap tinggal, dan itu tidak pernah kuanggap biasa.</p>
+          <p class="letter-paragraph" data-p="3" hidden>Di usia 19 ini, aku tidak mendoakan hal yang muluk-muluk. Aku cuma berharap kamu selalu sehat, selalu merasa dicintai, dan semua mimpi yang kamu simpan pelan-pelan jadi kenyataan. Dan kalau boleh, izinkan aku ada di sampingmu saat itu terjadi.</p>
+          <p class="letter-paragraph" data-p="4" hidden>Selamat ulang tahun, sayang. Terima kasih sudah lahir ke dunia ini dan memilih untuk jalan bersamaku.<br><br><em>I Love U, hari ini dan seterusnya 🤍.</em><br>— RA</p>
+          <button class="btn btn-reveal" id="reveal-btn">Lanjutkan membaca 💙</button>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-back" data-back>Kembali</button>
+        <button class="btn btn-next" data-next>Lanjut</button>
+      </div>
+    </section>
+
+    <!-- ---------- WINDOW 2: GALERI FOTO ---------- -->
+    <section class="screen window" id="window-2" data-window="2">
+      <div class="gallery-content">
+        <h2 class="section-title">Galeri Kenangan 📸</h2>
+        <p class="section-hint">Ketuk foto untuk memperbesar</p>
+        <div class="gallery-grid" id="gallery-grid">
+          <!-- Ganti src di script.js / file ini sesuai nama foto kamu -->
+          <div class="gallery-item" data-img="photos/g1.jpg"><img src="ft 1.jpeg" alt="Kenangan 1" loading="lazy"></div>
+          <div class="gallery-item" data-img="photos/g2.jpg"><img src="ft 2.jpeg" alt="Kenangan 2" loading="lazy"></div>
+          <div class="gallery-item" data-img="photos/g3.jpg"><img src="ft 3.jpeg" alt="Kenangan 3" loading="lazy"></div>
+          <div class="gallery-item" data-img="photos/g4.jpg"><img src="ft 4.jpeg" alt="Kenangan 4" loading="lazy"></div>
+          <div class="gallery-item" data-img="photos/g5.jpg"><img src="ft 5.jpeg" alt="Kenangan 5" loading="lazy"></div>
+          <div class="gallery-item" data-img="photos/g6.jpg"><img src="ft 6.jpeg" alt="Kenangan 6" loading="lazy"></div>
+        </div>
+      </div>
+      <div class="nav-row">
+        <button class="btn btn-back" data-back>Kembali</button>
+        <button class="btn btn-next" data-next>Lanjut</button>
+      </div>
+    </section>
+
+    <!-- ---------- WINDOW 3: TIMELINE KENANGAN ---------- -->
+    <section class="screen window" id="window-3" data-window="3">
+      <div class="timeline-content">
+        <h2 class="section-title">Timeline Kenangan 🕰️</h2>
+        <div class="timeline timeline--zigzag" id="timeline">
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-photo"><img src="3 mei 25.jpeg" alt="" loading="lazy"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">3 Mei 2025</div>
+          </div>
+          <div class="timeline-item timeline-item--right">
+            <div class="timeline-photo"><img src="9 ags 25.jpeg" alt="" loading="lazy"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">9 Agustus 2025</div>
+          </div>
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-photo"><img src="14 juni 26.jpeg" alt="" loading="lazy"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">14 Juni 2026</div>
+          </div>
+          <div class="timeline-item timeline-item--right">
+            <div class="timeline-photo"><img src="5 ags 26.jpeg" alt="" loading="lazy"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">5 Agustus 2026</div>
+          </div>
+          <div class="timeline-item timeline-item--left">
+            <div class="timeline-photo"><img src="28 sep 26.jpeg" alt="" loading="lazy"></div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">28 September 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="nav-row nav-row--end">
+        <button class="btn btn-back" data-back>Kembali</button>
+        <button class="btn btn-finish" id="finish-btn">Selesai 💙</button>
+      </div>
+    </section>
+
+    <!-- ---------- FINAL SCREEN ---------- -->
+    <section class="screen window" id="window-final" data-window="final">
+      <div class="final-content">
+        <div class="final-heart">💙</div>
+        <h2 class="final-title">Terima kasih sudah membaca semuanya.</h2>
+        <p class="final-text">Selamat ulang tahun ke-19, Alsa. I love U Sayang.</p>
+        <button class="btn btn-replay" id="replay-btn">Ulangi dari awal</button>
+      </div>
+    </section>
+
+  </div><!-- /#app -->
+
+  <!-- Lightbox overlay for gallery -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">✕</button>
+    <img src="" alt="" id="lightbox-img">
+  </div>
+
+  <!-- Background music, ganti src ke file mp3 kamu -->
+  <audio id="bg-music" loop preload="none">
+    <source src="magnolia.MP3" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
